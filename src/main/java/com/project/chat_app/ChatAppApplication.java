@@ -1,10 +1,12 @@
 package com.project.chat_app;
 import com.project.chat_app.client.Client2;
+import com.project.chat_app.server.Server;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChatAppApplication {
+public class ChatAppApplication implements CommandLineRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ChatAppApplication.class, args);
@@ -21,7 +23,8 @@ public class ChatAppApplication {
     }
 
 
-
-
-
+    @Override
+    public void run(String... args) throws Exception {
+        Server.main();
+    }
 }

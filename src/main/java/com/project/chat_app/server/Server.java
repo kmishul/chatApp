@@ -2,11 +2,6 @@ package com.project.chat_app.server;
 import com.project.chat_app.service.ChatBackupService;
 import com.project.chat_app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,7 +19,7 @@ public class Server {
     private static ArrayList<MessagingThread> clients = new ArrayList<>();
 
 
-    public static void main(String[]args) throws Exception {
+    public static void main() throws Exception {
         ServerSocket server = new ServerSocket(8082, 10);
         out.println("Now Server Is Running");
         while (true) {
@@ -49,8 +44,8 @@ public class Server {
     }
 
     static class MessagingThread extends Thread {
-       // @Autowired
-        UserService userService=new UserService();
+        @Autowired
+        UserService userService;
         @Autowired
         ChatBackupService chatBackupService;
 
